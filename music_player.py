@@ -57,8 +57,8 @@ nextimg = pygame.image.load("assets\\next.png")
 previousimg = pygame.image.load("assets\\previous.png")
 
 # directory
-path = "C:\\Users\\Baldeb Shaw\\Music\\music"
-path_adder = "C:\\Users\\Baldeb Shaw\\Music\\music\\"
+path = "C:\\Users\\Username\\Music\\music"
+path_adder = "C:\\Users\\Username\\Music\\music\\"
 songs = []
 for (dirpath, dirnames, filenames) in walk(path):
     songs.extend(filenames)
