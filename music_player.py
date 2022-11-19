@@ -14,6 +14,7 @@ import os
 import sys
 import sys
 
+username = os.getlogin()
 pygame.init()
 mixer.init()
 screen = pygame.display.set_mode((425, 575))
@@ -57,8 +58,8 @@ nextimg = pygame.image.load("assets\\next.png")
 previousimg = pygame.image.load("assets\\previous.png")
 
 # directory
-path = "C:\\Users\\Username\\Music\\music"
-path_adder = "C:\\Users\\Username\\Music\\music\\"
+path = f"C:\\Users\\{username}\\Music\\music\\"
+path_adder = f"C:\\Users\\{username}\\Music\\music\\"
 songs = []
 for (dirpath, dirnames, filenames) in walk(path):
     songs.extend(filenames)
@@ -84,6 +85,14 @@ try:
 except:
     None
 
+def play(self):
+    src = path_adder + songs[song]
+    dst = path_adder + songs[song].replace(".mp3", ".wav")
+    audSeg = AudioSegment.from_mp3(src)
+    audSeg.export(dst, format="wav")
+    pygame.mixer.music.load(dst)
+    pygame.mixer.music.play()
+    music_state = "playing"
 
 music_state = "stopped"
 end_event = pygame.USEREVENT+1
